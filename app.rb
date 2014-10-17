@@ -1,4 +1,6 @@
 require 'sinatra'
+require 'sinatra/reloader' if development?
+
 require 'omniauth-twitter'
 require 'twitter'
 require 'json'
@@ -51,8 +53,6 @@ get '/' do
   @timeline = twitter.home_timeline
   erb :index
 end
-
-
 
 get '/logout' do
   session.clear
